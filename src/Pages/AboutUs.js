@@ -44,8 +44,11 @@ export default function ButtonMUI() {
               textAlign: "justify",
             }}
           >
-            You may create your resume quickly using the free online tool known as Resume Builder. With so many options at your disposal, you may quickly and professionally create a resume. Additional profile images can be uploaded to the resumes. You have the opportunity to see and download your resume after completing the fields. For local storage on your hard disc, click download. Your previously prepared resumes are available for updating, as well as deletion.
-
+            we believe that every job seeker deserves to stand out. Whether you're a recent graduate,
+            a career switcher, or an experienced professional, crafting a well-organized, impactful resume
+            is crucial to making a great first impression. That's why we’re here to help you create a
+            resume that not only represents your skills and achievements but also makes you shine in front
+            of potential employers.
           </Typography>
           <Stack
             sx={{
@@ -56,7 +59,7 @@ export default function ButtonMUI() {
             <img
               src={aboutCV}
               alt="img"
-              // style={{width:"20%", height:"10%"}}
+            // style={{width:"20%", height:"10%"}}
             />
           </Stack>
         </Stack>
@@ -76,7 +79,7 @@ export default function ButtonMUI() {
             Kindly Share in your circle
           </Typography>
           <Box className="icons">
-            <Link to="https://BLANK/">
+            <Link to="https://www.instagram.com/sunil_kumar_tg/?utm_source=qr&igsh=MWh1cWd1Nm43b2tuZg%3D%3D">
               <Instagram
                 sx={{ fontSize: "40px", paddingLeft: "15px" }}
                 color="error"
