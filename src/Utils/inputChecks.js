@@ -4,9 +4,7 @@ export const inputChecks = (type, name) => {
   } else if (type === "email") {
     return {
       required: "*Please fill this field",
-      pattern:
-        /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/,
-    };
+      pattern: /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/,};
   } else if (type === "number") {
     switch (name) {
       case "mobile":

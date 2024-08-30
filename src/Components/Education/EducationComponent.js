@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const years = [
   " Present ",
+  " 2025 ",
   " 2024 ",
   " 2023 ",
   " 2022 ",

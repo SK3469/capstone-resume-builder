@@ -9,12 +9,7 @@ import TemplateEducationComponent from "../../Components/TemplateEducation/Templ
 import TemplateKeySkillComponent from "../../Components/TemplateKeySkill/TemplateKeySkillComponent";
 
 const Template2 = (props) => {
-  // console.log(
-  //   props.personalinfo,
-  //   props.workexperience,
-  //   props.educationinfo,
-  //   props.skills
-  // );
+
   const personalinfo = props.personalinfo
     ? props.personalinfo
     : data.personal_info;
@@ -29,22 +24,8 @@ const Template2 = (props) => {
   return (
     <Paper
       sx={{
-        // height: "700px",
-        // width: "600px"
-        width: {
-          xs: "350px",
-          sm: "400px",
-          md: "450px",
-          lg: "500px",
-          xl: "600px",
-        },
-        height: {
-          xs: "500px",
-          sm: "550px",
-          md: "600px",
-          lg: "650px",
-          xl: "700px",
-        },
+        width: {xs: "350px",sm: "400px",md: "450px",lg: "500px", xl: "550px",},
+        height: {xs: "500px",sm: "550px",md: "600px",lg: "650px",xl: "700px",},
       }}
       id={`${props.index}report`}
       elevation={3}>

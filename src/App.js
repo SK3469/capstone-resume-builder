@@ -9,10 +9,9 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* Home Page Route */}
+        {/* HOME PagE Route */}
         <Route exact path="/" element={<Home />} />
-
-        {/* Details Filling Page */}
+        {/* Details Filling PAgE */}
         <Route
           exact
           path="/template/fill-details"
@@ -20,12 +19,9 @@ const App = () => {
             <CheckSelectedId>
               <DetailsFilling />
             </CheckSelectedId>
-          }
-        />
-
+          }/>
         {/* My Resumes Page */}
         <Route exact path="/my/resumes" element={<MyResumes />} />
-
         {/* About Us Page */}
         <Route exact path="/about-us" element={<AboutUs />} />
       </Routes>

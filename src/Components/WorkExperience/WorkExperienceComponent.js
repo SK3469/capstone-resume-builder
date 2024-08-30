@@ -1,10 +1,10 @@
 import "./WorkExperienceComponent.css";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button, Divider, MenuItem, Paper, Select } from "@mui/material";
 import { connect } from "react-redux";
 import { addAllExperience, addExperience } from "../../Redux/Actions/actions";
-import {BackNextBtnComponent,SelectComponent,InputComponent} from "../../Pages/index";
+import { BackNextBtnComponent, SelectComponent, InputComponent } from "../../Pages/index";
 
 //mapStateToProps is used for selecting the part of the data from the store that the connected component needs
 const mapStateToProps = (state) => ({
@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const years = [
   " Present ",
+  " 2025 ",
   " 2024 ",
   " 2023 ",
   " 2022 ",
@@ -61,31 +62,33 @@ const WorkExperienceComponent = (props) => {
   };
 
   const handleNext = (data) => {
-    // console.log(data);
     setLoading(true);
 
     let experienceOne = {};
     let experienceTwo = {};
+    let experienceThree = {};
+    let experienceFour = {};
 
     for (let index in data) {
-      // console.log(index.slice(0, index.length));
       if (index.includes("1")) {
         experienceOne[index.slice(0, index.length - 1)] = data[index];
-      } else {
+      } else if (index.includes("2")) {
         experienceTwo[index.slice(0, index.length - 1)] = data[index];
+      } else if (index.includes("3")) {
+        experienceThree[index.slice(0, index.length - 1)] = data[index];
+      } else if (index.includes("4")) {
+        experienceFour[index.slice(0, index.length - 1)] = data[index];
       }
     }
 
-    // console.log(experienceOne, experienceTwo);
+    const allExperiences = [];
 
-    if (Object.keys(experienceTwo).length) {
-      props.setAllExperience([
-        { ...experienceOne, id: 1 },
-        { ...experienceTwo, id: 2 },
-      ]);
-    } else {
-      props.setAllExperience([{ ...experienceOne, id: 1 }]);
-    }
+    if (Object.keys(experienceOne).length) allExperiences.push({ ...experienceOne, id: 1 });
+    if (Object.keys(experienceTwo).length) allExperiences.push({ ...experienceTwo, id: 2 });
+    if (Object.keys(experienceThree).length) allExperiences.push({ ...experienceThree, id: 3 });
+    if (Object.keys(experienceFour).length) allExperiences.push({ ...experienceFour, id: 4 });
+
+    props.setAllExperience(allExperiences);
 
     setTimeout(() => {
       setLoading(false);
@@ -93,16 +96,16 @@ const WorkExperienceComponent = (props) => {
     }, 1000);
   };
 
-  // console.log(props.experiences, errors);
-
   const addNewExperience = () => {
-    props.setExperience({
-      id: props.experiences.length + 1,
-      jobTitle: "",
-      organizationName: "",
-      startYear: "",
-      endYear: "",
-    });
+    if (props.experiences.length < 4) {
+      props.setExperience({
+        id: props.experiences.length + 1,
+        jobTitle: "",
+        organizationName: "",
+        startYear: "",
+        endYear: "",
+      });
+    }
   };
 
   const editJobTitleExperience = (value, id) => {
@@ -178,7 +181,8 @@ const WorkExperienceComponent = (props) => {
                       ? errors[`startYear${experience.id}`].message
                       : null
                   }
-                  error={errors[`startYear${experience.id}`] ? true : false}>
+                  error={errors[`startYear${experience.id}`] ? true : false}
+                >
                   <Controller
                     render={(props) => {
                       return (
@@ -191,7 +195,8 @@ const WorkExperienceComponent = (props) => {
                                 ? true
                                 : false
                               : false
-                          }>
+                          }
+                        >
                           {years.map((year, index) => {
                             return (
                               <MenuItem key={index} value={year}>
@@ -215,7 +220,8 @@ const WorkExperienceComponent = (props) => {
                       ? errors[`endYear${experience.id}`].message
                       : null
                   }
-                  error={errors[`endYear${experience.id}`] ? true : false}>
+                  error={errors[`endYear${experience.id}`] ? true : false}
+                >
                   <Controller
                     render={(props) => (
                       <Select
@@ -227,7 +233,8 @@ const WorkExperienceComponent = (props) => {
                               ? true
                               : false
                             : false
-                        }>
+                        }
+                      >
                         {years.map((year, index) => {
                           return (
                             <MenuItem key={index} value={year}>
@@ -247,7 +254,7 @@ const WorkExperienceComponent = (props) => {
             </div>
           );
         })}
-        {props.experiences.length === 2 ? null : (
+        {props.experiences.length >= 4 ? null : (
           <div className="add-new-btn-cont">
             <Button onClick={addNewExperience} variant="text">
               Add New
