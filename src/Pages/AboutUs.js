@@ -105,13 +105,13 @@ export default function ButtonMUI() {
                 color="success"
               />
             </Link>
-            <Link to="https://twitter.com/SUNILK3469">
+            <Link to="https://twitter.com/">
               <TwitterIcon
                 sx={{ fontSize: "40px", paddingLeft: "15px" }}
                 color="info"
               />
             </Link>
-            <Link to="https://github.com/SK3469">
+            <Link to="https://github.com">
               <GitHub
                 sx={{ fontSize: "40px", paddingLeft: "15px", color: "black" }}
               />
